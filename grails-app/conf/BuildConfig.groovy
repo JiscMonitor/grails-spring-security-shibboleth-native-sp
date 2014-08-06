@@ -28,13 +28,20 @@ grails.project.dependency.resolution = {
 
         // runtime 'mysql:mysql-connector-java:5.1.13'
     }
-	plugins {
-		// compile ':spring-security-core:1.2.7.2'
-		// compile ':spring-security-ldap:1.0.5'
-		// test ':code-coverage:1.2.5'
-		// test ':codenarc:0.16.1'
-		// test ':gmetrics:0.3.1'
-	}
+    plugins {
+
+      build ":tomcat:7.0.53"
+
+      // plugins needed at runtime but not for compilation
+      runtime ":hibernate4:4.3.5.3" // or ":hibernate:3.6.10.15"
+
+      compile ":spring-security-core:2.0-RC4"
+      compile ':spring-security-ldap:2.0-RC2'
+
+      compile ":code-coverage:2.0.3-1"
+      compile ":codenarc:0.21"
+      compile ":gmetrics:0.3.1"
+    }
 }
 
 codenarc.reports = {

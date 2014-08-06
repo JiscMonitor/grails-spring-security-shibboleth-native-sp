@@ -10,11 +10,11 @@ import org.codehaus.groovy.grails.plugins.springsecurity.ldap.GrailsLdapAuthorit
 
 class SpringSecurityShibbolethNativeSpGrailsPlugin {
     // the plugin version
-    def version = "1.0.3"
+    def version = "2.0.0-RC1"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.3.0 > *"
+    def grailsVersion = "2.4.3 > *"
     // the other plugins this plugin depends on
-    Map  dependsOn = [springSecurityCore: '1.2.7.2 > *']
+    Map  dependsOn = [springSecurityCore: '2.0-RC4 > *']
 	// Load after LDAP if installed...
 	def loadAfter = ['springSecurityLdap']
     // resources that are excluded from plugin packaging
