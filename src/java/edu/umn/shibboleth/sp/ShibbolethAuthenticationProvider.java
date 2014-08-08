@@ -108,7 +108,7 @@ class ShibbolethAuthenticationProvider implements AuthenticationProvider, Initia
 
 			if (userDetails != null) {
 		   		principal = userDetails;
-				authorities = userDetails.getAuthorities();
+				authorities = (Collection<GrantedAuthority>)userDetails.getAuthorities();
 			} else {
 		   		principal = shibToken.getEppn();
 			}

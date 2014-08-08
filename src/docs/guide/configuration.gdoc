@@ -13,23 +13,23 @@ environments {
     production {
 	...
         // Enable shibboleth, disable mock
-        grails.plugins.springsecurity.shibboleth.active = true
-        grails.plugins.springsecurity.mock.active = false
+        grails.plugin.springsecurity.shibboleth.active = true
+        grails.plugin.springsecurity.mock.active = false
 	...
     }
     development {
 	...
         // Enable Mock security for development mode
-        grails.plugins.springsecurity.shibboleth.active = false
-        grails.plugins.springsecurity.mock.active = true
-        grails.plugins.springsecurity.ipRestrictions = [ '/**': ['127.0.0.0/8', '::1/128'] ]
+        grails.plugin.springsecurity.shibboleth.active = false
+        grails.plugin.springsecurity.mock.active = true
+        grails.plugin.springsecurity.ipRestrictions = [ '/**': ['127.0.0.0/8', '::1/128'] ]
 	...
     }
     test {
 	...
         // Enable shibboleth, disable mock
-        grails.plugins.springsecurity.shibboleth.active = true
-        grails.plugins.springsecurity.mock.active = false
+        grails.plugin.springsecurity.shibboleth.active = true
+        grails.plugin.springsecurity.mock.active = false
 	...
     }
 }
@@ -38,9 +38,9 @@ environments {
 h2. Configuring for your IdP
 
 {note}
-Any property overrides must be specified in @grails-app/conf/Config.groovy@ using the @grails.plugins.springsecurity@ suffix, for example
+Any property overrides must be specified in @grails-app/conf/Config.groovy@ using the @grails.plugin.springsecurity@ suffix, for example
 {code}
-grails.plugins.springsecurity.shibboleth.principalUsername.attribute = 'EPPN'
+grails.plugin.springsecurity.shibboleth.principalUsername.attribute = 'EPPN'
 {code}
 {note}
 
@@ -85,7 +85,7 @@ ldap.usernameMapper.userDnBase | none, must be set | this must be set to true fo
 
 h2. Using a different User Details Service
 
-You can use any User Details Service with the Shibboleth plugin as long as it implements [GrailsUserDetailsService|https://github.com/grails-plugins/grails-spring-security-core/blob/master/src/java/org/codehaus/groovy/grails/plugins/springsecurity/GrailsUserDetailsService.java]. This is accomplished by setting the @userDetailsService@ in your @grails-app/conf/spring/resources.groovy@ file.
+You can use any User Details Service with the Shibboleth plugin as long as it implements [GrailsUserDetailsService|https://github.com/grails-plugins/grails-spring-security-core/blob/master/src/java/org/codehaus/groovy/grails.plugin.springsecurity/GrailsUserDetailsService.java]. This is accomplished by setting the @userDetailsService@ in your @grails-app/conf/spring/resources.groovy@ file.
 
 For example:
 
@@ -101,24 +101,24 @@ The following examples show how to use the roles attributes above to ensure that
 
 Sets the roles attribute to pull from grouper
 {code}
-grails.plugins.springsecurity.shibboleth.roles.attribute = 'Shib-Grouper-Roles'
+grails.plugin.springsecurity.shibboleth.roles.attribute = 'Shib-Grouper-Roles'
 {code}
 
 Sets the separator for the grouper attribute to a comma
 {code}
-grails.plugins.springsecurity.shibboleth.roles.separator = ','
+grails.plugin.springsecurity.shibboleth.roles.separator = ','
 {code}
 
 Tells the plugin to prefix all roles with 'SHIB_', for example, 'students' would become 'ROLE_SHIB_students'
 {code}
-grails.plugins.springsecurity.shibboleth.roles.prefix = 'SHIB_'
+grails.plugin.springsecurity.shibboleth.roles.prefix = 'SHIB_'
 {code}
 
 This maps IdPs to authentication methods to allow for security annotations
 for securing based on originating IdP server. In this example, the U of MN,
 and Northwestern University out of Chicago are assigned different roles.
 {code}
-grails.plugins.springsecurity.shibboleth.identityProvider.roles = [
+grails.plugin.springsecurity.shibboleth.identityProvider.roles = [
     'ROLE_IDP_UMN': 'https://idp2.shib.umn.edu/idp/shibboleth',
     'ROLE_IDP_NORTHWESTERN_U': 'https://fed.it.northwestern.edu/shibboleth-idp/SSO' ]
 {code}
@@ -126,7 +126,7 @@ grails.plugins.springsecurity.shibboleth.identityProvider.roles = [
 This maps roles to authentication methods to allow for security annotations
 for securing based on method, this example is to assigne a role for Two-Factor Auth (M-Key)
 {code}
-grails.plugins.springsecurity.shibboleth.authenticationMethod.roles = [
+grails.plugin.springsecurity.shibboleth.authenticationMethod.roles = [
     'ROLE_AUTH_METHOD_STANDARD': 'urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified',
     'ROLE_AUTH_METHOD_UMN_MKEY': 'https://www.umn.edu/shibboleth/classes/authncontext/mkey' ]
 {code}
@@ -136,7 +136,7 @@ the first role assigns the role VPN from IP addresses coming from
 the VPN pool.  The second tells the app the user is on campus, the 
 last tells the app if the user is coming in from within the department.
 {code}
-grails.plugins.springsecurity.remoteAddress.roles = [
+grails.plugin.springsecurity.remoteAddress.roles = [
     'ROLE_IP_UMN_VPN': ['134.84.0.0/23'],
     'ROLE_IP_UMN_CAMPUS': ['160.94.0.0/16', '128.101.0.0/16', '134.84.0.0/16'],
     'ROLE_IP_UMN_DEPT': ['160.94.111.0/25', '128.101.11.222/25', '134.84.111.222/26'] ]
@@ -149,31 +149,31 @@ What follows is a complete example configuration from @grails-app/conf/Config.gr
 {code}
 
 // Used by Controllers
-grails.plugins.springsecurity.shibboleth.loginUrl = '/Shibboleth.sso/Login?target={0}'
-grails.plugins.springsecurity.shibboleth.logoutUrl = '/Shibboleth.sso/Logout'
+grails.plugin.springsecurity.shibboleth.loginUrl = '/Shibboleth.sso/Login?target={0}'
+grails.plugin.springsecurity.shibboleth.logoutUrl = '/Shibboleth.sso/Logout'
 
 // Token Attributes
-grails.plugins.springsecurity.shibboleth.principalUsername.attribute = 'EPPN'
-grails.plugins.springsecurity.shibboleth.authenticationMethod.attribute = 'Shib-AuthnContext-Method'
-grails.plugins.springsecurity.shibboleth.identityProvider.attribute = 'Shib-Identity-Provider'
-grails.plugins.springsecurity.shibboleth.authenticationInstant.attribute = 'Shib-Authentication-Instant'
+grails.plugin.springsecurity.shibboleth.principalUsername.attribute = 'EPPN'
+grails.plugin.springsecurity.shibboleth.authenticationMethod.attribute = 'Shib-AuthnContext-Method'
+grails.plugin.springsecurity.shibboleth.identityProvider.attribute = 'Shib-Identity-Provider'
+grails.plugin.springsecurity.shibboleth.authenticationInstant.attribute = 'Shib-Authentication-Instant'
 
 // Used by Authentication Provider
-grails.plugins.springsecurity.shibboleth.roles.attribute = null
-grails.plugins.springsecurity.shibboleth.roles.separator = ','
-grails.plugins.springsecurity.shibboleth.roles.prefix = 'SHIB_'
-grails.plugins.springsecurity.shibboleth.extraAttributes = [ 'uid', 'Shib-Session-Index', 'Shib-Session-ID', 'Shib-AuthnContext-Class', 'Shib-Application-ID' ]
+grails.plugin.springsecurity.shibboleth.roles.attribute = null
+grails.plugin.springsecurity.shibboleth.roles.separator = ','
+grails.plugin.springsecurity.shibboleth.roles.prefix = 'SHIB_'
+grails.plugin.springsecurity.shibboleth.extraAttributes = [ 'uid', 'Shib-Session-Index', 'Shib-Session-ID', 'Shib-AuthnContext-Class', 'Shib-Application-ID' ]
 
 // This maps IdPs to authentication methods to allow for security annotations
 // for securing based on originating IdP server
-grails.plugins.springsecurity.shibboleth.identityProvider.roles = [
+grails.plugin.springsecurity.shibboleth.identityProvider.roles = [
     'ROLE_IDP_UMN': 'https://idp2.shib.umn.edu/idp/shibboleth',
     'ROLE_IDP_NORTHWESTERN': 'https://fed.it.northwestern.edu/shibboleth-idp/SSO',
     'ROLE_IDP_UMNTEST': 'https://idp-test.shib.umn.edu/idp/shibboleth' ]
 
 // This maps roles to authentication methods to allow for security annotations
 // for securing based on method
-grails.plugins.springsecurity.shibboleth.authenticationMethod.roles = [
+grails.plugin.springsecurity.shibboleth.authenticationMethod.roles = [
     'ROLE_AUTH_METHOD_STANDARD': 'urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified',
     'ROLE_IP_UMN_DEPT': ['160.94.111.0/25', '128.101.11.222/25', '134.84.111.222/26'] ]
 {code}

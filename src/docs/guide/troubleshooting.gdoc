@@ -45,7 +45,7 @@ log4j = {
 Other logging packages that may be of interest are
 {code}
 org.springframework.security.ldap
-org.codehaus.groovy.grails.plugins.springsecurity.ldap
+org.codehaus.groovy.grails.plugin.springsecurity.ldap
 {code}
 
 h2. Other languages

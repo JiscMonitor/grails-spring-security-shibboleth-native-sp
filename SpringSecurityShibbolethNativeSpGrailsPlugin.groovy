@@ -3,10 +3,10 @@ import edu.umn.shibboleth.sp.ShibbolethUserDetailsService
 import edu.umn.shibboleth.sp.ShibbolethAuthenticationProvider
 import edu.umn.shibboleth.sp.ShibbolethAuthenticationFilter
 import edu.umn.shibboleth.sp.ShibbolethLogoutFilter
-import org.codehaus.groovy.grails.plugins.springsecurity.SecurityFilterPosition
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-import org.codehaus.groovy.grails.plugins.springsecurity.GormUserDetailsService
-import org.codehaus.groovy.grails.plugins.springsecurity.ldap.GrailsLdapAuthoritiesPopulator
+import grails.plugin.springsecurity.SecurityFilterPosition
+import grails.plugin.springsecurity.SpringSecurityUtils
+import grails.plugin.springsecurity.userdetails.GormUserDetailsService
+import grails.plugin.springsecurity.ldap.userdetails.GrailsLdapAuthoritiesPopulator
 
 class SpringSecurityShibbolethNativeSpGrailsPlugin {
     // the plugin version
