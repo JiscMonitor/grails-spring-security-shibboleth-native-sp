@@ -46,6 +46,12 @@ grails.project.dependency.resolution = {
       compile ":code-coverage:2.0.3-1"
       compile ":codenarc:0.21"
       compile ":gmetrics:0.3.1"
+
+      // For grails maven-install
+      build(":release:3.0.1", ":rest-client-builder:1.0.3") {
+        export = false
+      }
+
     }
 }
 
