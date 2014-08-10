@@ -4,7 +4,11 @@ grails.project.test.reports.dir = "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 
+grails.project.repos.knowint.url = "http://projects.k-int.com/nexus-webapp-1.4.0/content/repositories/releases"
+grails.project.repos.default = "knowint"
+
 grails.project.dependency.resolver = "maven" // or ivy
+
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
