@@ -44,9 +44,9 @@ grails.project.dependency.resolution = {
       compile ":spring-security-core:2.0-RC4"
       compile ':spring-security-ldap:2.0-RC2'
 
-      compile ":code-coverage:2.0.3-1"
-      compile ":codenarc:0.21"
-      compile ":gmetrics:0.3.1"
+      test ":code-coverage:2.0.3-2"
+      test ":codenarc:0.21"
+      test ":gmetrics:0.3.1"
 
       // For grails maven-install
       build(":release:3.0.1", ":rest-client-builder:1.0.3") {
