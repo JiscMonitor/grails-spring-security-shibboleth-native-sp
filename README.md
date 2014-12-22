@@ -43,3 +43,17 @@ You can run the test suite by running
 
 	grails test-app -coverage
 
+
+
+Publish to nexus with
+
+grails publish-plugin
+
+.. By default this publshes to the knowint repo, which is configured in ~/.grails/settings.groovy as
+
+grails.project.repos.knowint.username = "..."
+grails.project.repos.knowint.password = "..."
+grails.project.repos.knowint.url = "http://nexus.k-int.com/content/repositories/releases"
+grails.project.repos.knowint.type = "maven"
+
+
