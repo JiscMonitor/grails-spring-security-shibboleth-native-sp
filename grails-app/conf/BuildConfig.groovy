@@ -39,10 +39,10 @@ grails.project.dependency.resolution = {
     }
     plugins {
 
-      build ":tomcat:7.0.53"
+      // build ":tomcat:7.0.53"
 
       // plugins needed at runtime but not for compilation
-      runtime ":hibernate4:4.3.5.3" // or ":hibernate:3.6.10.15"
+      // runtime ":hibernate4:4.3.5.3" // or ":hibernate:3.6.10.15"
 
       compile ":spring-security-core:2.0-RC4"
       compile ':spring-security-ldap:2.0-RC2'
