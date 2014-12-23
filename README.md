@@ -57,3 +57,6 @@ grails.project.repos.knowint.url = "http://nexus.k-int.com/content/repositories/
 grails.project.repos.knowint.type = "maven"
 
 
+Installation Gotchas
+
+Don't forget to set tomcatAuthentication="false" in server.xml
